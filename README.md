@@ -79,3 +79,29 @@ controle-de-refeicao/
 ## 📄 Licença
 
 Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).
+
+---
+
+# Controle de Refeição — GONAR Engenharia (English)
+
+**Offline** system for tracking employee **meals** (coffee/lunch) and **attendance** on civil engineering job sites. Runs entirely from a single HTML file — no install, no server, no internet — and exports formatted Excel spreadsheets ready to send to accounting.
+
+## ✨ Features
+
+Multiple job sites, each with its own periods, team, and prices. **Meals module:** date-range periods (auto-generate a fortnight or full month), spreadsheet-style fast entry (Enter/arrow to move down, drag-fill up or down), automatic totals, formatted `.xlsx` export. **Attendance module:** fortnightly/monthly periods with automatic weekdays, team grouped by Admin/Production/Contractors, one-click status marking (`P/F/A/NP/FE/DE`), group subtotals, formatted `.xlsx` export. Plus an embedded company logo, JSON backup/restore, and a responsive dark-theme UI.
+
+## 🚀 Usage
+
+Download `index.html` and double-click it — opens in any browser, works fully offline, and saves data in that machine's browser storage.
+
+## 💾 Data & backup
+
+Data is stored locally (`localStorage`). Use **Backup** to export a `.json` file and **Restore** to bring it into another computer — clearing browser data erases entries, so back up regularly.
+
+## 🛠️ Tech stack
+
+Plain HTML/CSS/JS (single file) with [ExcelJS](https://github.com/exceljs/exceljs) bundled in for `.xlsx` generation — no runtime dependencies, 100% offline.
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE).
