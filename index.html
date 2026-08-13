@@ -305,6 +305,29 @@ td.num .ti{text-align:center;font-weight:600;font-size:15px}
   .pagehead h1{font-size:23px}
   .totalspanel{grid-template-columns:1fr}
   .totalspanel .hero{border-right:none;border-bottom:1px solid var(--emerald-line)}
+
+  /* Evita zoom automático do iOS ao focar campos (exige >=16px) e garante alvos de toque confortáveis */
+  .in,.ti,input,select,textarea{font-size:16px!important}
+  .btn{min-height:44px}
+  .btn.icon{min-width:44px;min-height:44px}
+  .navitem{min-height:46px}
+  .daycell{min-width:38px;padding:13px 0}
+
+  /* Tabela de Refeições -> lista de cards no mobile (sem scroll horizontal) */
+  #refWrap table,#refWrap tbody,#refWrap tr,#refWrap td{display:block;width:100%}
+  #refWrap thead{display:none}
+  #refWrap tbody tr{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin-bottom:10px}
+  #refWrap tbody tr:hover td{background:none}
+  #refWrap tbody td{border-bottom:1px solid var(--line);padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  #refWrap tbody td:last-child{border-bottom:none;padding-top:12px}
+  #refWrap tbody td::before{content:attr(data-label);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;flex:0 0 auto}
+  #refWrap tbody td.datecell input,#refWrap tbody td input{max-width:58%;text-align:right}
+  #refWrap tbody td.delcell{justify-content:flex-end}
+  #refWrap tbody td.delcell::before{content:none}
+
+  /* Grade de Frequência: mantém formato de planilha (é uma matriz nome x dias), mas fixa a coluna de nome ao rolar */
+  .fgrid .namecol{position:sticky;left:0;z-index:2;background:var(--surface-2);box-shadow:2px 0 6px rgba(0,0,0,.35)}
+  .fgrid .grouprow td,.fgrid .subrow .lbl{position:sticky;left:0}
 }
 
 </style>
@@ -591,12 +614,12 @@ function renderRefBody(){const p=curPeriod();const body=document.getElementById(
   if(!p){body.innerHTML=`<tr><td colspan="6"><div class="empty"><div class="big">Nenhum período ainda</div>Crie um período pra começar a lançar as refeições.</div></td></tr>`;renderRefTotals();return;}
   if(!p.dias.length){body.innerHTML=`<tr><td colspan="6"><div class="empty">Sem dias. Use “+ Adicionar dia”.</div></td></tr>`;renderRefTotals();return;}
   body.innerHTML=p.dias.map((d,i)=>`<tr style="--i:${i}">
-    <td class="datecell"><input type="date" value="${d.data||''}" onchange="refEdit(${i},'data',this.value)"></td>
-    <td class="wd">${dowFull(d.data)}</td>
-    <td class="num numcell" data-col="cafes" data-row="${i}"><input class="ti" data-col="cafes" data-row="${i}" inputmode="numeric" value="${d.cafes??''}" onfocus="onNumFocus(this)" onkeydown="onNumKey(event,'cafes',${i})" oninput="refEdit(${i},'cafes',this.value)"></td>
-    <td class="num numcell" data-col="marmitas" data-row="${i}"><input class="ti" data-col="marmitas" data-row="${i}" inputmode="numeric" value="${d.marmitas??''}" onfocus="onNumFocus(this)" onkeydown="onNumKey(event,'marmitas',${i})" oninput="refEdit(${i},'marmitas',this.value)"></td>
-    <td><input class="ti" value="${esc(d.obs)}" placeholder="—" oninput="refEdit(${i},'obs',this.value)"></td>
-    <td style="text-align:center"><button class="btn icon" title="Remover" onclick="refDelDay(${i})">✕</button></td>
+    <td class="datecell" data-label="Data"><input type="date" value="${d.data||''}" onchange="refEdit(${i},'data',this.value)"></td>
+    <td class="wd" data-label="Dia">${dowFull(d.data)}</td>
+    <td class="num numcell" data-col="cafes" data-row="${i}" data-label="Cafés"><input class="ti" data-col="cafes" data-row="${i}" inputmode="numeric" value="${d.cafes??''}" onfocus="onNumFocus(this)" onkeydown="onNumKey(event,'cafes',${i})" oninput="refEdit(${i},'cafes',this.value)"></td>
+    <td class="num numcell" data-col="marmitas" data-row="${i}" data-label="Almoços"><input class="ti" data-col="marmitas" data-row="${i}" inputmode="numeric" value="${d.marmitas??''}" onfocus="onNumFocus(this)" onkeydown="onNumKey(event,'marmitas',${i})" oninput="refEdit(${i},'marmitas',this.value)"></td>
+    <td data-label="Observação"><input class="ti" value="${esc(d.obs)}" placeholder="—" oninput="refEdit(${i},'obs',this.value)"></td>
+    <td class="delcell" style="text-align:center"><button class="btn icon" title="Remover" onclick="refDelDay(${i})">✕</button></td>
   </tr>`).join('');
   renderRefTotals();}
 function renderRefTotals(){const t=refTotals();const O=curObra();const vc=t.cafes*O.cafePreco,vm=t.marmitas*O.marmitaPreco;
