@@ -1,4 +1,8 @@
-# Controle de Refeição — GONAR Engenharia
+# RanchoControl · Controle de Refeição
+
+Criado em 2026 na **GONAR Engenharia Civil** para substituir as planilhas de refeição e frequência das obras. Hoje faz parte do meu portfólio.
+
+![Tela do módulo de refeições: obra ativa, períodos, tabela de cafés e almoços por dia e o total a pagar](.github/screenshot.png)
 
 Sistema **offline** para controle de **refeições** (cafés e almoços) e **frequência** de funcionários em obras de engenharia civil. Tudo roda em um único arquivo HTML — sem instalação, sem servidor, sem internet — e exporta planilhas Excel já formatadas para enviar ao financeiro.
 
@@ -70,8 +74,7 @@ Se quiser acessar pelo navegador via link:
 controle-de-refeicao/
 ├── index.html      # o sistema completo (app + biblioteca embutida)
 ├── README.md       # este arquivo
-├── LICENSE         # licença de uso
-└── .gitignore      # arquivos ignorados pelo Git
+└── LICENSE         # licença de uso
 ```
 
 ---
@@ -82,7 +85,9 @@ Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).
 
 ---
 
-# Controle de Refeição — GONAR Engenharia (English)
+# RanchoControl · Meal Control (English)
+
+Built in 2026 at **GONAR Engenharia Civil** to replace the meal and attendance spreadsheets on its construction sites. Today it is part of my portfolio.
 
 **Offline** system for tracking employee **meals** (coffee/lunch) and **attendance** on civil engineering job sites. Runs entirely from a single HTML file — no install, no server, no internet — and exports formatted Excel spreadsheets ready to send to accounting.
 
