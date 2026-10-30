@@ -121,3 +121,15 @@ O código está sob a licença [MIT](LICENSE).
 ## Contato
 
 Isaac Gomes de Moraes · [LinkedIn](https://www.linkedin.com/in/isaacgomesmoraes/) · [e-mail](mailto:isaacgm260653@gmail.com) · [GitHub](https://github.com/IsaacGomes260653)
+
+---
+
+## English summary
+
+**RanchoControl** replaces the meal and attendance spreadsheets of a construction site with a single HTML file that works offline and exports formatted Excel files for accounting. I built it in 2026 while working at **GONAR Engenharia Civil**. I no longer use it, and it is now part of my portfolio.
+
+- **Meals:** periods generated from a start date, spreadsheet-like entry (Enter, arrow keys, drag to fill), live totals and `.xlsx` export with the company logo.
+- **Attendance:** team grouped by administration, production and contractors, one-click status cells (present, absent, sick note, leave and more), subtotals and a summary by role, also exported to `.xlsx`.
+- Plain HTML, CSS and JavaScript with [ExcelJS](https://github.com/exceljs/exceljs) bundled in. Data lives in `localStorage`, with JSON backup and restore.
+
+**Run it:** download or clone the repository and double-click `index.html`. No internet, server or install needed. Code under the [MIT](LICENSE) license.
