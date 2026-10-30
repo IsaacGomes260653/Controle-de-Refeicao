@@ -466,9 +466,9 @@ const FUNCOES=["ALMOXARIFE","AUXILIAR ALMOXARIFADO","AUX. ADMINISTRATIVO","AUX. 
 let state=null, memoryOnly=false;
 
 function novaObra(nome,cafe,marm,emp){return{id:uid(),nome:nome||'Nova obra',empresaPadrao:(emp||'GONAR').toUpperCase(),
-  cafePreco:cafe??5,marmitaPreco:marm??16,assinatura:"Engª Patricia de Oliveira Gontijo Aguiar\nGonar Engenharia Ltda",
+  cafePreco:cafe??5,marmitaPreco:marm??16,assinatura:"Responsável técnico\nGonar Engenharia Ltda",
   ref:{periodos:[],sel:null},freq:{periodos:[],sel:null}};}
-function defaultState(){const o=novaObra("OBRA 02 - ESPLENDORE",5,16,"GONAR");
+function defaultState(){const o=novaObra("OBRA 01",5,16,"GONAR");
   return{config:{logo:DEFAULT_LOGO,logoExt:'png',empresa:"GONAR Engenharia"},obras:[o],obraSel:o.id};}
 
 function migrateV2(){
