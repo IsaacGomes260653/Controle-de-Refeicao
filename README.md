@@ -71,3 +71,25 @@ flowchart LR
 - Todo o estado (obras, períodos, lançamentos, equipe e configurações) é um único objeto, salvo no `localStorage` a cada mudança. Se o navegador não deixar salvar, o sistema continua funcionando só na memória, e o backup passa a ser o jeito de guardar os dados.
 - Os dados ficam na chave `controleObra_v3`. Quem tinha a versão anterior (`controleObra_v2`, com uma obra só) tem os dados migrados automaticamente na primeira abertura.
 - Na exportação, o ExcelJS monta a planilha célula a célula e o navegador baixa o arquivo, com nomes como `REFEICOES_<obra>_<período>.xlsx`.
+
+## Como rodar
+
+**Pré-requisitos:** só um navegador (Chrome, Edge ou Firefox). Não precisa de internet, servidor nem instalação.
+
+1. Baixe o projeto: `git clone https://github.com/IsaacGomes260653/Controle-de-Refeicao.git` ou, no GitHub, **Code → Download ZIP**.
+2. Dê dois cliques no `index.html`. Ele abre no navegador já com uma obra de exemplo.
+3. Em **Refeições**, clique em **+ Novo período**, escolha a data inicial e o número de dias e lance os cafés e almoços. Em **Exportar planilha**, o `.xlsx` é baixado.
+
+Não há demonstração publicada: era um sistema interno da obra.
+
+> Os dados ficam no navegador daquele computador. Limpar os dados do navegador apaga os lançamentos, então use **Backup** com frequência.
+
+## Estrutura de pastas
+
+```
+.
+├── index.html     # o sistema inteiro: estilo, ExcelJS e o código da aplicação
+├── LICENSE
+├── README.md
+└── .github/       # banner, capturas e imagem de compartilhamento
+```
