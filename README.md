@@ -93,3 +93,31 @@ Não há demonstração publicada: era um sistema interno da obra.
 ├── README.md
 └── .github/       # banner, capturas e imagem de compartilhamento
 ```
+
+## O que eu aprendi
+
+- Ferramenta interna tem que se parecer com o que as pessoas já usam: quem lançava estava acostumado ao Excel, então o `Enter`, as setas e o arrastar para preencher pesaram mais do que qualquer tela bonita.
+- Guardar dados só no navegador funciona, mas cobra o preço depois: precisei de backup em arquivo e de uma migração quando o formato mudou da versão 2 para a 3.
+- Uma planilha "bonita" é feita de muitos detalhes (mesclar células, bordas, larguras, imagem), e o ExcelJS deixa controlar todos eles pelo código.
+- A versão para celular veio depois, com cartões no lugar da tabela, a coluna de nomes fixa e campos que não dão zoom no iPhone.
+
+## Próximos passos
+
+O projeto não está em desenvolvimento. Se eu voltar a ele:
+
+- [ ] Deixar o nome da empresa no cabeçalho configurável (hoje é sempre "GONAR Engenharia").
+- [ ] Testes automáticos para os totais e para as planilhas exportadas.
+- [ ] Sincronizar os dados entre computadores, o que exigiria um servidor.
+
+## Créditos
+
+- Criado para as obras da GONAR Engenharia Civil. A logo embutida é da GONAR.
+- Planilhas geradas com o [ExcelJS](https://github.com/exceljs/exceljs) (licença MIT), embutido no `index.html`.
+
+## Licença
+
+O código está sob a licença [MIT](LICENSE).
+
+## Contato
+
+Isaac Gomes de Moraes · [LinkedIn](https://www.linkedin.com/in/isaacgomesmoraes/) · [e-mail](mailto:isaacgm260653@gmail.com) · [GitHub](https://github.com/IsaacGomes260653)
