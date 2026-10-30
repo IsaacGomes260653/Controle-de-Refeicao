@@ -32,3 +32,42 @@ Criei o RanchoControl em 2026, quando trabalhava na **GONAR Engenharia Civil**, 
 </table>
 
 Capturas feitas com o Playwright, abrindo o `index.html` no navegador. A obra, os números e os nomes da equipe são fictícios.
+
+## Funcionalidades
+
+- **Várias obras**, cada uma com os próprios períodos, preços do café e do almoço, empresa padrão e assinatura.
+- **Refeições**
+  - Período criado a partir da data inicial e do número de dias (uma quinzena ou o mês inteiro), com o dia da semana preenchido sozinho.
+  - Lançamento rápido como numa planilha: `Enter` ou `↓` desce uma linha, `↑` sobe, célula vazia vale 0, e um ponto de arrastar copia o valor para cima ou para baixo.
+  - Totais na hora: cafés, almoços, valor de cada um e o total a pagar.
+  - Exportação para `.xlsx` com a logo no topo, bordas, dia da semana por extenso e os totais em reais.
+- **Frequência**
+  - Equipe dividida em administração, produção e terceirizados, com sugestão de funções comuns de obra.
+  - Presença marcada clicando na célula, que alterna entre `P` (presente), `F` (falta), `A` (atestado), `NP` (não presente), `FE` (férias) e `DE` (demitido). Sábados e domingos aparecem destacados.
+  - Subtotais por grupo e da obra, resumo por função e assinatura no rodapé, também exportados para `.xlsx`.
+- **Backup e restauração** de todos os dados num arquivo `.json`, para levar para outro computador.
+- **Funciona no celular**: a tabela de refeições vira cartões, e a coluna de nomes fica fixa na frequência.
+
+## Tecnologias
+
+| Tecnologia | Por quê |
+|---|---|
+| HTML, CSS e JavaScript puros, num arquivo só | Quem usava não precisava instalar nada: bastava copiar o arquivo e dar dois cliques, até num computador sem internet. |
+| [ExcelJS](https://github.com/exceljs/exceljs), embutido no HTML | Gera o `.xlsx` com células mescladas, bordas, cores e a logo, no formato que o financeiro já recebia. Embutido para funcionar offline. |
+| localStorage | Guarda os lançamentos no próprio navegador, sem servidor e sem conta. |
+| JSON (backup) | O localStorage fica preso a um navegador. O backup leva os dados para outro computador e protege contra limpeza do navegador. |
+
+## Como funciona
+
+```mermaid
+flowchart LR
+    U["Lançamentos<br/>na tela"] --> E["estado da aplicação<br/>(obras, períodos, equipe)"]
+    E <--> L[("localStorage<br/>controleObra_v3")]
+    E --> X["ExcelJS<br/>.xlsx formatado"]
+    E <--> B["backup .json"]
+```
+
+- O `index.html` tem três partes: o estilo, a biblioteca ExcelJS (cerca de 950 KB) e o código da aplicação (cerca de 70 KB, com a logo em base64).
+- Todo o estado (obras, períodos, lançamentos, equipe e configurações) é um único objeto, salvo no `localStorage` a cada mudança. Se o navegador não deixar salvar, o sistema continua funcionando só na memória, e o backup passa a ser o jeito de guardar os dados.
+- Os dados ficam na chave `controleObra_v3`. Quem tinha a versão anterior (`controleObra_v2`, com uma obra só) tem os dados migrados automaticamente na primeira abertura.
+- Na exportação, o ExcelJS monta a planilha célula a célula e o navegador baixa o arquivo, com nomes como `REFEICOES_<obra>_<período>.xlsx`.
